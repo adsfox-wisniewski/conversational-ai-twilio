@@ -30,6 +30,13 @@ fastify.get("/", async (_, reply) => {
 // Route to handle incoming calls from Twilio
 fastify.all("/incoming-call-eleven", async (request, reply) => {
     // Generate TwiML response to connect the call to a WebSocket stream
+    const contentType = request.headers['content-type'];
+    if (contentType !== 'application/xml') {
+        return reply
+            .status(415)
+            .send({ error: "Unsupported Media Type: application/xml required" });
+    }
+
 
     console.log("[Twilio] Incoming call received", {
         host: request.headers.host,
