@@ -3,10 +3,6 @@ import WebSocket from "ws";
 import dotenv from "dotenv";
 import fastifyFormBody from "@fastify/formbody";
 import fastifyWs from "@fastify/websocket";
-import fastifyFormBody from "@fastify/formbody";
-
-// Zarejestruj plugin dla form-urlencoded
-fastify.register(fastifyFormBody);
 
 // Load environment variables from .env file
 dotenv.config();
